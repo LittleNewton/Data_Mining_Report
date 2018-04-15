@@ -30,9 +30,9 @@ status <- c("Poor", "Improved", "Excellent", "Poor")
 patientdata <- data.frame(patientID, age, diabetes, status)
 patientdata
 
-patientdata[1:2]                        # È¡³ö¶àÉÙÁĞ£¬»¹ÊÇÒ»¸öÊı×é
-patientdata[c("diabetes", "status")]    # ´«Ò»¸öÊı×é½øÈ¥£¬Êı×éÊÇÁĞÃûµÄ·ûºÅ´®Êı×é
-patientdata$age                         # È¡³öÄ³Ò»ÁĞ²¢×ªÖÃ£¬ÕâÓëmatlab²»Ì«Ò»Ñù
+patientdata[1:2]                        # å–å‡ºå¤šå°‘åˆ—ï¼Œè¿˜æ˜¯ä¸€ä¸ªæ•°ç»„
+patientdata[c("diabetes", "status")]    # ä¼ ä¸€ä¸ªæ•°ç»„è¿›å»ï¼Œæ•°ç»„æ˜¯åˆ—åçš„ç¬¦å·ä¸²æ•°ç»„
+patientdata$age                         # å–å‡ºæŸä¸€åˆ—å¹¶è½¬ç½®ï¼Œè¿™ä¸matlabä¸å¤ªä¸€æ ·
 
 summary(mtcars$mpg)
 plot(mtcars$mpg, mtcars$disp)
