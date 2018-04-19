@@ -19,3 +19,9 @@ Visual Studio 2017 与R Studio，经过配置可以发现两者的界面相似�
 
 [Youtube 1](https://www.youtube.com/watch?v=U4-RnTW5dfw)
 这个是有关R语言入门的。
+
+## 5. 报告阅读手册
+
+### 5.1 数据归约（降维）
+
+### 5.2 主成分分析（利用已有的公式）
