@@ -7,4 +7,4 @@
 以下是代码所参考的链接：
 
 - Relief算法：<https://blog.csdn.net/ferrarild/article/details/18792613>
-- ChiMerge算法：<https://blog.csdn.net/linchere/article/details/7959389
+- ChiMerge算法：<https://blog.csdn.net/zhaoyl03/article/details/8689440>
