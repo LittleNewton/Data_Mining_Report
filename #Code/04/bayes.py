@@ -10,7 +10,7 @@ from sklearn.naive_bayes import GaussianNB
 class Bayes_Test():
     # 读取样本 数据集
     def load_dataset(self):
-        url = 'iris.data'
+        url = 'Iris.csv'
         names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
         dataset = pandas.read_csv(url, names=names)
         return dataset
@@ -24,7 +24,8 @@ class Bayes_Test():
         seed = 7
         # 分割数据集 测试/验证
         X_train, X_validation, Y_train, Y_validation = \
-            model_selection.train_test_split(X, Y, test_size=validation_size, random_state=seed)
+            model_selection.train_test_split(X, Y, test_size=validation_size, 、
+			random_state=seed)
         return X_train, X_validation, Y_train, Y_validation
 
     """第一步：划分样本集"""
@@ -134,8 +135,10 @@ class Bayes_Test():
     # 计算后验概率P(Y=ck|X)=P(X|Y=ck)*P(Y=ck)/∑
     def cal_posteriori_probability(self, X, Y, p, means, vars):
         pa, pb, pc = p
-        e_c1_1, e_c1_2, e_c1_3, e_c1_4, e_c2_1, e_c2_2, e_c2_3, e_c2_4, e_c3_1, e_c3_2, e_c3_3, e_c3_4 = means
-        var_c1_1, var_c1_2, var_c1_3, var_c1_4, var_c2_1, var_c2_2, var_c2_3, var_c2_4, var_c3_1, var_c3_2, var_c3_3, var_c3_4 = vars
+        e_c1_1, e_c1_2, e_c1_3, e_c1_4, e_c2_1, e_c2_2, e_c2_3, \
+		e_c2_4, e_c3_1, e_c3_2, e_c3_3, e_c3_4 = means
+        var_c1_1, var_c1_2, var_c1_3, var_c1_4, var_c2_1, var_c2_2, \
+		var_c2_3, var_c2_4, var_c3_1, var_c3_2, var_c3_3, var_c3_4 = vars
 
         print('p:', p)
         print('means:', means)
@@ -154,17 +157,20 @@ class Bayes_Test():
         # 遍历训练整个输入空间，计算后验概率并判决
         for i in range(len(X1)):
             # 计算后验概率=P(X|Y=C1)P(Y=C1)
-            P_1 = stats.norm.pdf(X1[i], e_c1_1, var_c1_1) * stats.norm.pdf(X2[i], e_c1_2, var_c1_2) * stats.norm.pdf(
+            P_1 = stats.norm.pdf(X1[i], e_c1_1, var_c1_1) * stats.norm.pdf(X2[i], \
+			e_c1_2, var_c1_2) * stats.norm.pdf(
                 X3[i], e_c1_3,
                 var_c1_3) * stats.norm.pdf(
                 X4[i], e_c1_4, var_c1_4) * pa
             # 计算后验概率=P(X|Y=C2)P(Y=C2)
-            P_2 = stats.norm.pdf(X1[i], e_c2_1, var_c2_1) * stats.norm.pdf(X2[i], e_c2_2, var_c2_2) * stats.norm.pdf(
+            P_2 = stats.norm.pdf(X1[i], e_c2_1, var_c2_1) * stats.norm.pdf(X2[i], \
+			e_c2_2, var_c2_2) * stats.norm.pdf(
                 X3[i], e_c2_3,
                 var_c2_3) * stats.norm.pdf(
                 X4[i], e_c2_4, var_c2_4) * pb
             # 计算后验概率=P(X|Y=C3)P(Y=C3)
-            P_3 = stats.norm.pdf(X1[i], e_c3_1, var_c3_1) * stats.norm.pdf(X2[i], e_c3_2, var_c3_2) * stats.norm.pdf(
+            P_3 = stats.norm.pdf(X1[i], e_c3_1, var_c3_1) * stats.norm.pdf(X2[i], \
+			e_c3_2, var_c3_2) * stats.norm.pdf(
                 X3[i], e_c3_3,
                 var_c3_3) * stats.norm.pdf(
                 X4[i], e_c3_4, var_c3_4) * pc
@@ -211,14 +217,16 @@ class Bayes_Test():
         kfold = model_selection.KFold(n_splits=10, random_state=seed)
         # cross_val_score() 对数据集进行指定次数的交叉验证并为每次验证效果评测
         cv_results = \
-            model_selection.cross_val_score(model, X_train, Y_train, cv=kfold, scoring=scoring)
+            model_selection.cross_val_score(model, X_train, Y_train, \
+			cv=kfold, scoring=scoring)
         results = cv_results
         msg = "%s: %f (%f)" % (name + '精度', cv_results.mean(), cv_results.std())
         print(msg)
 
         # Show Algorithms
         dataresult = pandas.DataFrame(results)
-        dataresult.plot(title='Bayes accuracy analysis', kind='density', subplots=True, layout=(1, 1), sharex=False,
+        dataresult.plot(title='Bayes accuracy analysis', kind='density', \
+		subplots=True, layout=(1, 1), sharex=False,
                         sharey=False)
         dataresult.hist()
         plt.show()
